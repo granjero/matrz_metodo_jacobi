@@ -29,6 +29,7 @@ main()
     int i;
     int j;
     int k;
+    int l = 0;    
     
     // PIDE LA DIMENSION DE LA MATRIZ
     printf("\nIngrese la dimensión de A \n");
@@ -119,7 +120,7 @@ main()
         printf("\n");
     }
 
-    
+    // HACE EL METODO DE JACOBI
     while (mayor > tolerancia)
     {
         for(i = 0; i < dimension; i++)
@@ -131,28 +132,27 @@ main()
             X1[i] = X1[i] + Cj[i];
         }
         
-        printf("\nEsto es la Xn\n");
+        printf("\nX%d =\n",l);
         for(i = 0; i < dimension; i++)
         {       
-            printf("%.3f " ,X1[i]);
+            printf("%.7f " ,X1[i]);
             printf("\n");
         }
         
         // ELIJE EL MAYOR DE X1
-        mayor = X1[0] - X0[0];
-        //mayor = fabs(mayor);
-        printf("\n1 mayor %.3f\n",fabs(mayor));
+        //mayor = X1[0] - X0[0];
+        mayor = fabs(X1[0] - X0[0]);
+        //printf("\n1 mayor %.7f\n",fabs(mayor));
 
         for(i = 0; i < dimension; i++)
         {   
-            if (X1[i] - X0[i] > mayor)
+            if (fabs(X1[i] - X0[i]) > mayor)
             {
-                mayor = fabs(X1[i]) - fabs(X0[i]);
+                mayor = fabs(X1[i] - X0[i]);
             }
         }
         
-        printf("\nmayor %.3f\n",mayor);
-
+        printf("\nmayor %.7f\n",mayor);
         
         // IGUALO X1 a X0 Y BORRO X1
         for(i = 0; i < dimension; i++)
@@ -164,20 +164,9 @@ main()
         {
             X1[i] = 0;
         }
-        
+        l++;
     }
-    
-    
-    
-    
-    
-   
-    
     /*
-    
-    
-    
-    
     // CALCULO X1
     for(i = 0; i < dimension; i++)
     {
@@ -227,8 +216,7 @@ main()
         printf("%.3f " ,X1[i]);
         printf("\n");
     }
-    */
-    
+    */    
     return (0);
 }
 
