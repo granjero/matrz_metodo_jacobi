@@ -135,7 +135,7 @@ main()
             X1[i] = X1[i] + Cj[i];
         }
         
-        printf("\nX%d =\n",l);
+        printf("\nX%d\n",l);
         for(i = 0; i < dimension; i++)
         {       
             printf("%.7f " ,X1[i]);
@@ -155,7 +155,7 @@ main()
             }
         }
         
-        printf("\n Diferencia entre X1 y X0\n");
+        printf("\n\n%d Diferencia entre X1 y X0 = %f\n",l + 1, Difx1x0);
         
         // IGUALO X1 a X0 Y BORRO X1
         for(i = 0; i < dimension; i++)
@@ -169,57 +169,6 @@ main()
         }
         l++;
     }
-    /*
-    // CALCULO X1
-    for(i = 0; i < dimension; i++)
-    {
-        for (j = 0; j < dimension; j++)
-        {
-            X1[i] = X1[i] + (Ej[i][j] * X0[j]);            
-        }
-        X1[i] = X1[i] + Cj[i];
-    }
-        
-    //IMPRIME X1
-    printf("\nEsto es la X1\n");
-
-    for(i = 0; i < dimension; i++)
-    {       
-        printf("%.3f " ,X1[i]);
-        printf("\n");
-    }
-
-    // IGUALO X1 a X0 Y BORRO X1
-    for(i = 0; i < dimension; i++)
-    {
-        X0[i] = X1[i];
-        X1[i] = 0;
-    }
-    
-    
-    X1[0] = 0;
-    X1[1] = 0;
-    X1[2] = 0;
-    
-    // CALCULO X1
-    for(i = 0; i < dimension; i++)
-    {
-        for (j = 0; j < dimension; j++)
-        {
-            X1[i] = X1[i] + (Ej[i][j] * X0[j]);            
-        }
-        X1[i] = X1[i] + Cj[i];
-    }
-        
-    //IMPRIME X1
-    printf("\nEsto es la X2\n");
-
-    for(i = 0; i < dimension; i++)
-    {       
-        printf("%.3f " ,X1[i]);
-        printf("\n");
-    }
-    */    
     return (0);
 }
 
