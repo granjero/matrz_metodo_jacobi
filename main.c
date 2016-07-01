@@ -12,19 +12,18 @@
  */
 main()
 {
-    float A[tamanio][tamanio];
-    //float A[3][3] = { {10, 1, 2}, {2, 15, 3}, {2, 3, 20} };
+    int dimension = 3; //porque esta harcodeado
+    //float A[tamanio][tamanio];
+    float A[3][3] = { {10, 1, 2}, {2, 15, 3}, {2, 3, 20} };
     float X[tamanio];
-    float b[tamanio];
-    //float b[3] = {100, 150, 120};
+    //float b[tamanio];
+    float b[3] = {100, 150, 120};
     float Ej[tamanio][tamanio];
     float Cj[tamanio];
     float X0[tamanio] = {0, 0, 0};
     float X1[tamanio] = {0, 0, 0};
-    float cota = 1;
     float tolerancia = 0.00007; 
-    float mayor = 1;
-    int dimension;
+    float Difx1x0 = 1;
     
     int i;
     int j;
@@ -32,10 +31,11 @@ main()
     int l = 0;    
     
     // PIDE LA DIMENSION DE LA MATRIZ
-    printf("\nIngrese la dimensión de A \n");
-    scanf("%d",&dimension);
+    //printf("\nIngrese la dimensión de A \n");
+    //scanf("%d",&dimension);
     
     // PIDE LOS VALORES DE LA MATRIZ
+/*
     printf("\nIngrese uno a uno de iz a der los valores de A \n");
     for(i = 0; i < dimension; i++)
     {
@@ -46,6 +46,7 @@ main()
         
     }    
     // IMPRIME LA MATRIZ INGRESADA
+*/
     printf("\nEsta es la matriz ingresada\n");
     for(i = 0; i < dimension; i++)
     {
@@ -57,12 +58,14 @@ main()
     }
 
     // PIDE LOS VALORES DE b
+/*
     printf("\nIngrese uno a uno los valores de b \n");
     for(i = 0; i < dimension; i++)
     {
         scanf("%f" ,&b[i]);       
     }   
     
+*/
     // IMPRIME b INGRESADb
     printf("\nEsta es b ingresado\n");
     for(i = 0; i < dimension; i++)
@@ -121,7 +124,7 @@ main()
     }
 
     // HACE EL METODO DE JACOBI
-    while (mayor > tolerancia)
+    while (Difx1x0 > tolerancia)
     {
         for(i = 0; i < dimension; i++)
         {
@@ -140,19 +143,19 @@ main()
         }
         
         // ELIJE EL MAYOR DE X1
-        //mayor = X1[0] - X0[0];
-        mayor = fabs(X1[0] - X0[0]);
-        //printf("\n1 mayor %.7f\n",fabs(mayor));
+        //Difx1x0 = X1[0] - X0[0];
+        Difx1x0 = fabs(X1[0] - X0[0]);
+        //printf("\n1 Difx1x0 %.7f\n",fabs(Difx1x0));
 
         for(i = 0; i < dimension; i++)
         {   
-            if (fabs(X1[i] - X0[i]) > mayor)
+            if (fabs(X1[i] - X0[i]) > Difx1x0)
             {
-                mayor = fabs(X1[i] - X0[i]);
+                Difx1x0 = fabs(X1[i] - X0[i]);
             }
         }
         
-        printf("\nmayor %.7f\n",mayor);
+        printf("\n Diferencia entre X1 y X0\n");
         
         // IGUALO X1 a X0 Y BORRO X1
         for(i = 0; i < dimension; i++)
