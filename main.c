@@ -14,10 +14,10 @@ main()
 {
     int dimension = 3; //porque esta harcodeado
     //float A[tamanio][tamanio];
-    float A[3][3] = { {10, 1, 2}, {2, 15, 3}, {2, 3, 20} };
+    float A[tamanio][tamanio] = { {120, 11, 12}, {12, 125, 13}, {12, 13, 240} };
     float X[tamanio];
     //float b[tamanio];
-    float b[3] = {100, 150, 120};
+    float b[tamanio] = {100, 150, 120};
     float Ej[tamanio][tamanio];
     float Cj[tamanio];
     float X0[tamanio] = {0, 0, 0};
