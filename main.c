@@ -12,7 +12,7 @@
  */
 main()
 {
-    int dimension = 3; //porque esta harcodeado
+    int dimension; //recibe la dimension
     //float A[tamanio][tamanio];
     float A[tamanio][tamanio] = { {120, 11, 12}, {12, 125, 13}, {12, 13, 240} };
     float X[tamanio];
@@ -28,7 +28,11 @@ main()
     int i;
     int j;
     int k;
-    int l = 0;    
+    int l = 0;  
+    int m = 0;
+    
+    FILE *valoresMatriz;    
+
     
     // PIDE LA DIMENSION DE LA MATRIZ
     //printf("\nIngrese la dimensión de A \n");
@@ -45,8 +49,50 @@ main()
         }
         
     }    
+    */
+    
+    valoresMatriz = fopen("datos.txt", "r+");
+    i = 0;
+    
+    while(!feof(valoresMatriz))
+    {
+        if (m == 0)
+        {
+            fscanf(valoresMatriz, "%f", &dimension);
+            i++;
+        }
+        
+        if (m < (dimension * dimension))
+        {
+            
+            for(i = 0; i < dimension; i++)
+            {
+                for (j = 0; j < dimension; j++)
+                {
+                    fscanf(valoresMatriz, "%f", &A[i][j]);
+                    m++;
+                }
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+        }
+        
+        fscanf(valoresMatriz, "%f", &valoresX[i], &valoresY[i]);
+        //printf("X = %f Y = %f\n",valoresX[i],valoresY[i]);
+        i++;
+        n++;
+        //printf("%d\n",n);
+        
+    }    
+    
+    
     // IMPRIME LA MATRIZ INGRESADA
-*/
     printf("\nEsta es la matriz ingresada\n");
     for(i = 0; i < dimension; i++)
     {
