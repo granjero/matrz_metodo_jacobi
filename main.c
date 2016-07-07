@@ -58,9 +58,12 @@ main()
     {
         if (m == 0)
         {
-            fscanf(valoresMatriz, "%f", &dimension);
-            i++;
+            fscanf(valoresMatriz, "%d", &dimension);
+            m++;
+            printf("dimension2 = %d", dimension);
         }
+        
+        
         
         if (m < (dimension * dimension))
         {
@@ -73,21 +76,18 @@ main()
                     m++;
                 }
             }
-            
-            
-            
-            
-            
-            
-            
-            
         }
         
-        fscanf(valoresMatriz, "%f", &valoresX[i], &valoresY[i]);
-        //printf("X = %f Y = %f\n",valoresX[i],valoresY[i]);
-        i++;
-        n++;
-        //printf("%d\n",n);
+        if(m > dimension * dimension)
+        {
+            for (i = 0; i < dimension; i++)
+                {
+                    fscanf(valoresMatriz, "%f", &b[i]);
+                    m++;
+                }
+        }
+        
+        //fscanf(valoresMatriz, "%f", &variable);
         
     }    
     
@@ -215,6 +215,7 @@ main()
         }
         l++;
     }
+    
     return (0);
 }
 
