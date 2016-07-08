@@ -71,7 +71,7 @@ main()
         X1[i] = 0;
     }
     
-    //IMIME LA DIMENSION LEIDA DEL ARCHIVO
+    //IMPRIME LA DIMENSION LEIDA DEL ARCHIVO
     printf("dimension = %d", dimension);
 
     // IMPRIME LA MATRIZ LEIDA DEL ARCHIVO
@@ -85,7 +85,7 @@ main()
         printf("\n");
     }
 
-    // IMPRIME b 
+    // IMPRIME b LEIDO DEL ARCHIVO 
     printf("\nEsta es b \n");
     for(i = 0; i < dimension; i++)
     {       
