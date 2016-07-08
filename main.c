@@ -12,7 +12,7 @@
  */
 main()
 {
-    int dimension; //recibe la dimension
+    int dimension; //recibe la dimension de la matriz
     float A[tamanio][tamanio];
     float X[tamanio];
     float b[tamanio];
@@ -23,29 +23,27 @@ main()
     float tolerancia = 0.00001; 
     float Difx1x0 = 1;
     
-    int i;
-    int j;
-    int k;
-    int l = 0;  
-    int m = 0;
-    
-    FILE *valoresMatriz;    
+    int i; //CONTADOR PARA BUCLES
+    int j; //CONTADOR PARA BULCES
+    int l = 0; // CONTADOR DE ITERACIONES DE JACOBI
+    int m = 0; // CONTADOR PARA ARMAR LAS MATRICES DEL ARCHIVO
+        
+    FILE *valoresMatriz; //VARIABLE FILE PARA EL ARCHIVO
   
-    valoresMatriz = fopen("datos.txt", "r+");
-    i = 0;
+    valoresMatriz = fopen("datos.txt", "r+"); // ABRE EL ARCHIVO EN VALORESmATRIZ
     
+    //ITERA HASTA EL FINAL DEL ARCHIVO
     while(!feof(valoresMatriz))
     {
-        if (m == 0)
+        if (m == 0) // TOMA LA DIMENSION QUE ES EL PRIMER DATO DEL ARCHIVO
         {
-            fscanf(valoresMatriz, "%d", &dimension);
+            fscanf(valoresMatriz, "%d", &dimension); //guarda en dimension el primer valor del archivo
             m++;
-            printf("dimension2 = %d", dimension);
         }
         
-        if (m < (dimension * dimension))
+        if (m < (dimension * dimension)) //ENTRA CUANDO M ES MENOR QUE LA CANTIDAD DE ELEMENTO DE LA MATRIZ
         {
-            
+            //DOS FOR ENCADENADOS PARA ARMAR LA MATRIZ FILA POR FILA
             for(i = 0; i < dimension; i++)
             {
                 for (j = 0; j < dimension; j++)
@@ -56,7 +54,7 @@ main()
             }
         }
         
-        if(m > dimension * dimension)
+        if(m > dimension * dimension) //ENTRA CUANDO M ES MAYOR A 
         {
             for (i = 0; i < dimension; i++)
             {
@@ -65,8 +63,18 @@ main()
             }
         }
     }    
+        
+    //asigna X0 y X1 en 0
+    for(i = 0; i < dimension; i++)
+    {       
+        X0[i] = 0;
+        X1[i] = 0;
+    }
     
-    // IMPRIME LA MATRIZ INGRESADA
+    //IMIME LA DIMENSION LEIDA DEL ARCHIVO
+    printf("dimension = %d", dimension);
+
+    // IMPRIME LA MATRIZ LEIDA DEL ARCHIVO
     printf("\nEsta es la matriz\n");
     for(i = 0; i < dimension; i++)
     {
@@ -153,7 +161,7 @@ main()
             printf("\n");
         }
         
-        // ELIJE EL MAYOR DE X1
+        // ELIJE LA DIFERENCIA MAYOR DE X1
         Difx1x0 = fabs(X1[0] - X0[0]);
 
         for(i = 0; i < dimension; i++)
