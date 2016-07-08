@@ -13,16 +13,14 @@
 main()
 {
     int dimension; //recibe la dimension
-    //float A[tamanio][tamanio];
-    float A[tamanio][tamanio] = { {120, 11, 12}, {12, 125, 13}, {12, 13, 240} };
+    float A[tamanio][tamanio];
     float X[tamanio];
-    //float b[tamanio];
-    float b[tamanio] = {100, 150, 120};
+    float b[tamanio];
     float Ej[tamanio][tamanio];
     float Cj[tamanio];
-    float X0[tamanio] = {0, 0, 0};
-    float X1[tamanio] = {0, 0, 0};
-    float tolerancia = 0.00007; 
+    float X0[tamanio];
+    float X1[tamanio];
+    float tolerancia = 0.00001; 
     float Difx1x0 = 1;
     
     int i;
@@ -32,25 +30,7 @@ main()
     int m = 0;
     
     FILE *valoresMatriz;    
-
-    
-    // PIDE LA DIMENSION DE LA MATRIZ
-    //printf("\nIngrese la dimensión de A \n");
-    //scanf("%d",&dimension);
-    
-    // PIDE LOS VALORES DE LA MATRIZ
-/*
-    printf("\nIngrese uno a uno de iz a der los valores de A \n");
-    for(i = 0; i < dimension; i++)
-    {
-        for (j = 0; j < dimension; j++)
-        {
-            scanf("%f" ,&A[i][j]);
-        }
-        
-    }    
-    */
-    
+  
     valoresMatriz = fopen("datos.txt", "r+");
     i = 0;
     
@@ -62,8 +42,6 @@ main()
             m++;
             printf("dimension2 = %d", dimension);
         }
-        
-        
         
         if (m < (dimension * dimension))
         {
@@ -81,19 +59,15 @@ main()
         if(m > dimension * dimension)
         {
             for (i = 0; i < dimension; i++)
-                {
-                    fscanf(valoresMatriz, "%f", &b[i]);
-                    m++;
-                }
+            {
+                fscanf(valoresMatriz, "%f", &b[i]);
+                m++;
+            }
         }
-        
-        //fscanf(valoresMatriz, "%f", &variable);
-        
     }    
     
-    
     // IMPRIME LA MATRIZ INGRESADA
-    printf("\nEsta es la matriz ingresada\n");
+    printf("\nEsta es la matriz\n");
     for(i = 0; i < dimension; i++)
     {
         for (j = 0; j < dimension; j++)
@@ -103,17 +77,8 @@ main()
         printf("\n");
     }
 
-    // PIDE LOS VALORES DE b
-/*
-    printf("\nIngrese uno a uno los valores de b \n");
-    for(i = 0; i < dimension; i++)
-    {
-        scanf("%f" ,&b[i]);       
-    }   
-    
-*/
-    // IMPRIME b INGRESADb
-    printf("\nEsta es b ingresado\n");
+    // IMPRIME b 
+    printf("\nEsta es b \n");
     for(i = 0; i < dimension; i++)
     {       
         printf("%.1f " ,b[i]);
@@ -189,9 +154,7 @@ main()
         }
         
         // ELIJE EL MAYOR DE X1
-        //Difx1x0 = X1[0] - X0[0];
         Difx1x0 = fabs(X1[0] - X0[0]);
-        //printf("\n1 Difx1x0 %.7f\n",fabs(Difx1x0));
 
         for(i = 0; i < dimension; i++)
         {   
@@ -214,8 +177,6 @@ main()
             X1[i] = 0;
         }
         l++;
-    }
-    
+    }   
     return (0);
 }
-
